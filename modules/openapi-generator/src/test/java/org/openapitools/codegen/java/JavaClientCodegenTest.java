@@ -470,6 +470,8 @@ public class JavaClientCodegenTest {
         );
         assertThat(output.resolve("src/main/java/xyz/abcdef/api/DefaultApi.java")).content()
                 .contains("public class DefaultApi");
+        assertThat(output.resolve("build.gradle")).content()
+                .containsIgnoringWhitespaces("java { sourceCompatibility = JavaVersion.VERSION_17 targetCompatibility = JavaVersion.VERSION_17 }");
     }
 
     @Test

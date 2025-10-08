@@ -70,8 +70,14 @@ application {
     mainClass.set("{{invokerPackage}}.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("1.8")
-    targetCompatibility = JavaVersion.toVersion("1.8")
+    {{#java17}}
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    {{/java17}}
+    {{^java17}}
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    {{/java17}}
 }
 
 graalvmNative.toolchainDetection = false
